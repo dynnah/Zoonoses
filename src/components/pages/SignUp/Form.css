@@ -40,7 +40,7 @@ input {
   padding-right: 300px;
 }
 
-button.btn-submit {
+.btn-submit {
   color: whitesmoke;
   background-color: #5DBCD2;
   padding: 15px 10px 15px 10px;
@@ -49,8 +49,13 @@ button.btn-submit {
   margin-left: 700px;
 }
 
-button.btn-submit:hover {
-  color: #fff;
-  background-color: #f00946;
+.btn-submit:hover {
+  color: #1c2237;
+  border: none;
+  background-color: rgb(184, 184, 184);
   transition: all 0.2s ease-out;
+}
+
+.input-error {
+  border: 1px solid #f00946;
 }
