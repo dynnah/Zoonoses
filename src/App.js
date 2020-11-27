@@ -6,7 +6,7 @@ import Footer from './components/pages/Footer/Footer';
 import Home from './components/pages/HomePage/Home'
 import Services from './components/pages/Services/Services'
 import Contact from './components/pages/Contact/Contact'
-import SignUp from './components/pages/SignUp/SignUp'
+import FormSignUp from './components/pages/SignUp/FormSignUp'
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/services' component={Services} />
         <Route path='/contact' component={Contact} />
-        <Route path='/signup' component={SignUp} />
+        <Route path='/sign-up' component={FormSignUp} />
       </Switch>
       <Footer/>
     </Router>
