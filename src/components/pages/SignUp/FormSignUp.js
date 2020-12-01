@@ -11,7 +11,6 @@ const initialValues = {
   datanasc: '',
   sexo: '',
   email: '',
-  username: '',
   endereco: '',
   password: '',
   pet_name: '',
@@ -30,7 +29,6 @@ const initialErrors = {}
    datanasc: Yup.string().required('Nome é um campo obrigatório'),
    sexo: Yup.string().required('Nome é um campo obrigatório'),
    email: Yup.string().email().required('E-mail é um campo obrigatório'),
-   username: Yup.string().required('Nome de usuário é um campo obrigatório'),
    endereco: Yup.string().required('Endereço é um campo obrigatório'),
    password: Yup.string().required('Senha é um campo obrigatório'),
    pet_name: Yup.string().required('Nome do pet é um campo obrigatório'),
@@ -108,8 +106,6 @@ function FormSignUp() {
             <input name="sexo" placeholder='' value={values.sexo} onChange={handleChange} className={errors.sexo ? 'input-error' : ''} />
           <p>Endereço:</p>
             <input name="endereco" placeholder='' value={values.endereco} onChange={handleChange} className={errors.endereco ? 'input-error' : ''} />
-          <p>Usuário:</p>
-            <input name="username" placeholder='Digite seu nome de usuário' value={values.username} onChange={handleChange} className={errors.username ? 'input-error' : ''} />
           <p>Senha:</p>
             <input name="password" type="password" placeholder='Digite sua senha' value={values.password} onChange={handleChange} className={errors.password ? 'input-error' : ''} />
         </div>
