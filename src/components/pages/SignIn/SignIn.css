@@ -27,21 +27,28 @@
     border-right: 1px solid #5DBCD2;
 } 
 
-.texto {
+.texto-login {
     color:#1c2237;
     font-size: 24px;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 35px;
 }
 
+.div-user {
+    position: relative;
+    width:200px;
+    height:200px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    text-align:center;
+}
 
 .login {
     color: whitesmoke;
     background-color: #5DBCD2;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    margin-left: 300px;
     padding: 15px 25px 15px 25px;
     border-radius: 4px;
     border: none;

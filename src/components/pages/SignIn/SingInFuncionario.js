@@ -21,7 +21,7 @@ function SingInFuncionario() {
             </div>
             <div className="func-login">
             <Link Link to='/funcionario'>
-              <button className="login">Login</button>
+              <button className="botao-user">Login</button>
             </Link>
             </div>
             
