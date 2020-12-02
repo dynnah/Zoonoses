@@ -10,6 +10,8 @@ import FormSignUp from './components/pages/SignUp/FormSignUp'
 import SignIn from './components/pages/SignIn/SignIn'
 import SignInFuncionario from './components/pages/SignIn/SingInFuncionario'
 import SignInCuidador from './components/pages/SignIn/SignInCuidador'
+import Funcionario from './components/pages/Users/Funcionario'
+import Cuidador from './components/pages/Users/Cuidador'
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
         <Route path='/sign-up' component={FormSignUp} />
         <Route path='/sign-in' component={SignIn} />
         <Route path='/funcionario-sign-in' component={SignInFuncionario} />
+        <Route path='/funcionario' component={Funcionario} />
         <Route path='/cuidador-sign-in' component={SignInCuidador} />
+        <Route path='/cuidador' component={Cuidador} />
       </Switch>
       <Footer/>
     </Router>

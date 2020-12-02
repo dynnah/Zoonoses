@@ -1,0 +1,32 @@
+.welcome-title {
+    color:#1c2237;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+
+.opcoes-funcionario {
+    text-align: center;
+}
+
+button.opcoes {
+    color: whitesmoke;
+    background-color: #5DBCD2;
+    margin-top: 65px;
+    margin-right: 35px;
+    padding: 15px 25px 15px 25px;
+    border-radius: 4px;
+    border: none;
+}
+
+button.opcoes:hover {
+    color: #1c2237;
+    border: none;
+    background-color: rgb(184, 184, 184);
+    transition: all 0.2s ease-out;
+}
+
+.space {
+    padding-bottom: 200px;
+}
