@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { SiDatadog } from 'react-icons/si';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Button } from '../Button';
@@ -9,6 +9,8 @@ import { IconContext } from 'react-icons/lib';
 function Navbar() {
     const [click, setClick] = useState(false) 
     const [button, setButton] = useState(true);
+    const [hasUser, setHasUser] = useState(false);
+    const history = useHistory();
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -22,11 +24,60 @@ function Navbar() {
     };
 
     useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) {
+            setHasUser(true);
+        } else {
+            setHasUser(false);
+        }
+        history.listen(() => {
+            const token = localStorage.getItem('token')
+            if (token) {
+                setHasUser(true);
+            } else {
+                setHasUser(false);
+            }
+        })
+    }, [history])
+
+    useEffect(() => {
         showButton();
     }, []);
 
     window.addEventListener('resize', showButton);
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setHasUser(false);
+        history.push('/sign-in');
+
+    }
+
+    const _renderDesktopButton = () => {
+        if (hasUser) {
+            return <div className="btn-logout-link btn-logout--outline" onClick={handleLogout}>Logout</div>
+        } else {
+            return (
+                <Link to='/sign-in' className="btn-link" >
+                    <Button buttonStyle='btn--outline'>Login</Button>
+                </Link>  
+            )                   
+        }
+    }
+
+    const _renderMobileButton = () => {
+        if (hasUser) {
+            return <div className="btn-logout-link btn-logout--outline" onClick={handleLogout}>Logout</div>
+        } else {
+            return (
+                <Link to='/sign-in' className="btn-link" onClick={closeMobileMenu}>
+                    <Button buttonStyle='btn--outline' buttonSize='btn--mobile'>
+                        Login
+                    </Button>
+                </Link> 
+            )                   
+        }
+    }
     
     return (
         <>
@@ -57,17 +108,7 @@ function Navbar() {
                         </Link>
                       </li>
                       <li className="nav-btn">
-                          {button ? (
-                              <Link to='/sign-in' className="btn-link" >
-                                  <Button buttonStyle='btn--outline'>Login</Button>
-                              </Link>  
-                          ): (
-                             <Link to='/sign-in' className="btn-link" onClick={closeMobileMenu}>
-                                 <Button buttonStyle='btn--outline'
-                                 buttonSize='btn--mobile'>
-                                     Login</Button>
-                             </Link> 
-                          )}
+                          {button ? _renderDesktopButton(): _renderMobileButton()}
                       </li>
                   </ul>
               </div>

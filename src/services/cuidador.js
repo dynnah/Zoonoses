@@ -1,4 +1,5 @@
 import api from './api';
+import jwtDecode from 'jwt-decode';
 
 
 export const createCuidador = async (cuidador) => {
@@ -19,4 +20,14 @@ export const login = async (credentials) => {
     return true;
   }
   return false;
+}
+
+export const getCuidador = async () => {
+  const token = localStorage.getItem('token')
+  const { cuidador_id } = jwtDecode(token)
+  const response = await api.get(`/cuidadors/${cuidador_id}`)
+  if (response.status === 200) {
+    return response.data;
+  }
+  return null;
 }

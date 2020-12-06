@@ -4,3 +4,28 @@
   padding: 0;
   font-family: 'PT Sans', sans-serif;
 }
+
+.btn-logout-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px 16px;
+  height: 100%;
+  width: 100%;
+}
+
+.btn-logout-link:hover {
+  color: rgb(27, 27, 27);
+  background-color:  #fff;
+}
+
+.btn-logout--outline {
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 20px;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease-out;
+}

@@ -1,24 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './index.css';
-
+import { getCuidador } from '../../../services/cuidador';
 
 function Cuidador() {
+    const [cuidador, setCuidador] = useState({
+        nome: '',
+        email: '',
+        cpf: '',
+    });
+
+    useEffect(() => {
+        (async () => {
+            const data = await getCuidador();
+            if (data) {
+                setCuidador(data);
+            }
+        })();
+    }, []);
+
     return (
         <div>
         <div className="welcome">
-            <p className="welcome-title">Bem Vindo, Nome do Usuário </p>
+            <p className="welcome-title">Bem Vindo, {cuidador.nome} </p>
         </div>
         <div className="infos-cuidador">
-            <table>
+            <table id="cuidador">
                 <tr>
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Animal</th>
                 </tr>
                 <tr>
-                    <td>Nome do Funcionario</td>
-                    <td>funcionario@gmail.com</td>
+                    <td>{cuidador.nome}</td>
+                    <td>{cuidador.email}</td>
                     <td>Catinho</td>
                 </tr>
             </table>

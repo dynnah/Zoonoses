@@ -72,6 +72,6 @@
 .botao-user:hover {
     color: #1c2237;
     border: none;
-    background-color: rgb(184, 184, 184);
+    background-color: #038ddd;
     transition: all 0.2s ease-out;
   }

@@ -10,7 +10,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
+    width: 50%;
     margin-bottom: 50px;
 }
 
@@ -34,17 +34,35 @@ button.opcoes {
 button.opcoes:hover {
     color: #1c2237;
     border: none;
-    background-color: rgb(184, 184, 184);
+    background-color: #038ddd;
     transition: all 0.2s ease-out;
 }
 
-table, th, td {
-    border: 1px solid black;
+#cuidador {
+    font-family: 'PT Sans', sans-serif;
     border-collapse: collapse;
+    width: 100%;
   }
-  th, td {
-    padding: 5px;
+  
+  #cuidador td, #cuidador th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #cuidador tr:nth-child(even){
+      background-color: #f2f2f2;
+    }
+  
+  #cuidador tr:hover {
+      background-color: #ddd;
+    }
+  
+  #cuidador th {
+    padding-top: 12px;
+    padding-bottom: 12px;
     text-align: left;
+    background-color: #5DBCD2;
+    color: white;
   }
 
 
