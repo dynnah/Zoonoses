@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import './SignIn.css';
+import './index.css';
 
 function SignIn() {
     return (

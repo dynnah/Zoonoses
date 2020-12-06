@@ -1,6 +1,6 @@
 import React from 'react';
-import HeroSection from '../../HeroSection';
-import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
+import HeroSection from '../../components/HeroSection';
+import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './data';
 
 function Home() {
     return (

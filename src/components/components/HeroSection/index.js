@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button } from './Button';
+import { Button } from '../Button';
 import { Link } from 'react-router-dom';
-import './HeroSection.css';
+import './index.css';
 
 function HeroSection({
     lightBg, topLine, lightText, lightTextDesc, headline, description, buttonLabel, img, alt, imgStart

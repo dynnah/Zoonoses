@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Funcionario.css';
+import './index.css';
 
 function Funcionario() {
     return (

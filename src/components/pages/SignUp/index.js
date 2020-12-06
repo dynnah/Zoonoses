@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import swal from 'sweetalert';
-import './Form.css';
+import './index.css';
+import { createCuidador } from '../../../services/cuidador';
 
 const initialValues = {
   cpf: '',
-  rg: '',
+  telefone: '',
   name: '',
   datanasc: '',
   sexo: '',
   email: '',
-  endereco: '',
   password: '',
+  password_confirmation: '',
   pet_name: '',
   pet_sexo: '',
   pet_raca: '',
@@ -23,36 +24,20 @@ const initialValues = {
 const initialErrors = {}
 
  const validationSchema = Yup.object({
-   cpf : Yup.string().required('CPF é um campo obrigatório'),
-   rg: Yup.string().required('RG é um campo obrigatório'),
+   cpf: Yup.string().required('CPF é um campo obrigatório'),
+   telefone: Yup.string().required('Telefone é um campo obrigatório'),
    name: Yup.string().required('Nome é um campo obrigatório'),
    datanasc: Yup.string().required('Nome é um campo obrigatório'),
    sexo: Yup.string().required('Nome é um campo obrigatório'),
    email: Yup.string().email().required('E-mail é um campo obrigatório'),
-   endereco: Yup.string().required('Endereço é um campo obrigatório'),
    password: Yup.string().required('Senha é um campo obrigatório'),
+   password_confirmation: Yup.string().oneOf([Yup.ref('password'), undefined], 'As senhas precisam ser iguais').required('Senha é um campo obrigatório'),
    pet_name: Yup.string().required('Nome do pet é um campo obrigatório'),
    pet_raca: Yup.string().required('Raça do pet é um campo obrigatório'),
+   pet_sexo: Yup.string().required('Sexo do pet é um campo obrigatório'),
    pet_idade: Yup.string().required('Idade do pet é um campo obrigatório'),
    pet_peso: Yup.string().required('Peso do pet é um campo obrigatório'),
  })
-
-//const validationSchema = Yup.object({
-//  cpf : Yup.string(),
-//  rg: Yup.string(),
-//  name: Yup.string(),
-//  datanasc: Yup.date(),
-//  sexo: Yup.string(),
-//  email: Yup.string().email(),
-//  username: Yup.string(),
-//  endereco: Yup.string(),
-//  password: Yup.string(),
-//  pet_name: Yup.string(),
-//  pet_raca: Yup.string(),
-//  pet_idade: Yup.string(),
-//  pet_peso: Yup.string(),
-//})
-
 
 
 function FormSignUp() {
@@ -61,17 +46,34 @@ function FormSignUp() {
   const onSubmit = async (values) => {
     setIsLoading(true)
     try {
-      console.log(values)
-      const response = await new Promise((resolve, reject) => {
-        setTimeout(() => resolve('Resolvendo a promise'), 3000)
-      })
-      if (response) {
-        buttonAlert('Cadastro finalizado com sucesso!', 'Entraremos em contato', 'success')
+      const { cpf, name, sexo, telefone, datanasc, email, password, password_confirmation, pet_name, pet_raca, pet_sexo, pet_idade, pet_peso } = values
+      const newCuidador = {
+        cpf,
+        nome: name,
+        sexo,
+        telefone,
+        datanasc,
+        email,
+        password,
+        password_confirmation,
+        animal_attribute: {
+          nome: pet_name,
+          raca: pet_raca,
+          sexo: pet_sexo,
+          idade: pet_idade,
+          peso: pet_peso,
+        }
+      }
+      const data = await createCuidador(newCuidador);
+      if (data) {
+        const { nome } = data;
+        buttonAlert('Cadastro finalizado com sucesso!', `${nome}, entraremos em contato.`, 'success');
+        resetForm(initialValues);
       }
     } catch (error) {
-      buttonAlert('Algo deu errado', error.message, 'warning')
+      buttonAlert('Algo deu errado', error.message, 'warning');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
@@ -79,7 +81,7 @@ function FormSignUp() {
     swal(title, message, status);
   }
 
-  const { values, errors, handleSubmit, handleChange,  } = useFormik({
+  const { values, errors, handleSubmit, handleChange, resetForm } = useFormik({
     initialValues,
     initialErrors,
     validationSchema,
@@ -96,18 +98,18 @@ function FormSignUp() {
             <input type="text" name="name" placeholder='Digite seu nome' value={values.name} onChange={handleChange} className={`long-input ${errors.name ? 'input-error' : ''}`}/>
           <p>E-mail:</p>
             <input name="email" placeholder='exemplo@exemplo.com' value={values.email} onChange={handleChange} className={`long-input ${errors.email ? 'input-error' : ''}`}/>
+          <p>Telefone:</p>
+            <input name="telefone" placeholder='00 00000-0000' value={values.rg} onChange={handleChange} className={errors.rg ? 'input-error' : ''} />
           <p>CPF:</p>
             <input name="cpf" placeholder='000.000.000-00' value={values.cpf} onChange={handleChange} className={errors.cpf ? 'input-error' : ''} />
-          <p>RG:</p>
-            <input name="rg" placeholder='0.000.000' value={values.rg} onChange={handleChange} className={errors.rg ? 'input-error' : ''} />
           <p>Data de Nascimento:</p>
             <input name="datanasc" placeholder='00/00/0000' value={values.datanasc} onChange={handleChange} className={errors.datanasc ? 'input-error' : ''} />
           <p>Sexo:</p>
             <input name="sexo" placeholder='' value={values.sexo} onChange={handleChange} className={errors.sexo ? 'input-error' : ''} />
-          <p>Endereço:</p>
-            <input name="endereco" placeholder='' value={values.endereco} onChange={handleChange} className={errors.endereco ? 'input-error' : ''} />
           <p>Senha:</p>
             <input name="password" type="password" placeholder='Digite sua senha' value={values.password} onChange={handleChange} className={errors.password ? 'input-error' : ''} />
+          <p>Confirme sua Senha:</p>
+            <input name="password_confirmation" type="password" placeholder='Digite sua senha novamente' value={values.password_confirmation} onChange={handleChange} className={errors.password_confirmation ? 'input-error' : ''} />
         </div>
         <div className="dados-pet">
           <hr id="barra"/>

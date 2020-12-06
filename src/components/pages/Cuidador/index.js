@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Cuidador.css';
+import './index.css';
 
 
 function Cuidador() {

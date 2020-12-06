@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { SiDatadog } from 'react-icons/si';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Button } from './Button';
-import './Navbar.css';
+import { Button } from '../Button';
+import './index.css';
 import { IconContext } from 'react-icons/lib';
 
 function Navbar() {
