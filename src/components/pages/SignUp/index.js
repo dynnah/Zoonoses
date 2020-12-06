@@ -56,7 +56,7 @@ function FormSignUp() {
         email,
         password,
         password_confirmation,
-        animal_attribute: {
+        animal_attributes: {
           nome: pet_name,
           raca: pet_raca,
           sexo: pet_sexo,
@@ -99,7 +99,7 @@ function FormSignUp() {
           <p>E-mail:</p>
             <input name="email" placeholder='exemplo@exemplo.com' value={values.email} onChange={handleChange} className={`long-input ${errors.email ? 'input-error' : ''}`}/>
           <p>Telefone:</p>
-            <input name="telefone" placeholder='00 00000-0000' value={values.rg} onChange={handleChange} className={errors.rg ? 'input-error' : ''} />
+            <input name="telefone" placeholder='00 00000-0000' value={values.telefone} onChange={handleChange} className={errors.telefone ? 'input-error' : ''} />
           <p>CPF:</p>
             <input name="cpf" placeholder='000.000.000-00' value={values.cpf} onChange={handleChange} className={errors.cpf ? 'input-error' : ''} />
           <p>Data de Nascimento:</p>

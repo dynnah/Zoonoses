@@ -31,3 +31,15 @@ export const getCuidador = async () => {
   }
   return null;
 }
+
+export const updateCuidador = async (cuidador) => {
+  const token = localStorage.getItem('token')
+  const { cuidador_id } = jwtDecode(token)
+  const response = await api.patch(`/cuidadors/${cuidador_id}`, {
+    cuidador
+  });
+  if (response.status === 200) {
+    return response.data;
+  }
+  return null;
+} 

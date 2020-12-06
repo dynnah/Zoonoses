@@ -12,6 +12,8 @@ import SignInFuncionario from './components/pages/SingInFuncionario'
 import SignInCuidador from './components/pages/SingInCuidador'
 import Funcionario from './components/pages/Funcionario'
 import Cuidador from './components/pages/Cuidador'
+import EditarCuidador from './components/pages/EditarCuidador'
+import PrivateRoute from './components/components/PrivateRoute'
 
 function App() {
   return (
@@ -24,9 +26,10 @@ function App() {
         <Route path='/sign-up' component={FormSignUp} />
         <Route path='/sign-in' component={SignIn} />
         <Route path='/funcionario-sign-in' component={SignInFuncionario} />
-        <Route path='/funcionario' component={Funcionario} />
         <Route path='/cuidador-sign-in' component={SignInCuidador} />
-        <Route path='/cuidador' component={Cuidador} />
+        <PrivateRoute path="/funcionario" component={Funcionario} handler="funcionario_id" />
+        <PrivateRoute path="/cuidador" component={Cuidador} handler="cuidador_id" />
+        <PrivateRoute path="/edit-cuidador" component={EditarCuidador} handler="cuidador_id" />
       </Switch>
       <Footer/>
     </Router>

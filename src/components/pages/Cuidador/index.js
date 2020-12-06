@@ -8,6 +8,9 @@ function Cuidador() {
         nome: '',
         email: '',
         cpf: '',
+        animal: {
+            nome: '',
+        },
     });
 
     useEffect(() => {
@@ -34,15 +37,15 @@ function Cuidador() {
                 <tr>
                     <td>{cuidador.nome}</td>
                     <td>{cuidador.email}</td>
-                    <td>Catinho</td>
+                    <td>{cuidador.animal.nome}</td>
                 </tr>
             </table>
         </div>
         <div className="opcoes-cuidador">
-            <Link Link to='/edit-cuidador'>
+            <Link to='/edit-cuidador'>
                 <button className="opcoes">Editar Perfil</button>
             </Link>
-            <Link Link to='/solicitar-cirurgia'>
+            <Link to='/solicitar-cirurgia'>
                 <button className="opcoes">Solicitar Cirurgia</button>
             </Link> 
         </div>
