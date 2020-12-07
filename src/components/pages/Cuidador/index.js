@@ -29,16 +29,20 @@ function Cuidador() {
         </div>
         <div className="infos-cuidador">
             <table id="cuidador">
+              <tbody>
                 <tr>
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Animal</th>
                 </tr>
+              </tbody>
+              <tbody>
                 <tr>
                     <td>{cuidador.nome}</td>
                     <td>{cuidador.email}</td>
                     <td>{cuidador.animal.nome}</td>
                 </tr>
+              </tbody>
             </table>
         </div>
         <div className="opcoes-cuidador">
